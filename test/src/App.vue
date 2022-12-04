@@ -4,7 +4,6 @@
     <router-link to="/">
       <h1><span>Vue Movie</span></h1>
     </router-link>
-
   </nav>
 
 

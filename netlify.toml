@@ -1,3 +1,17 @@
 [build]
-publish = "build"
 command = "npm run build"
+functions = "functions"
+publish = "dist"
+
+[dev]
+framework = "#custom"
+command = "npm run dev:webpack"
+targetPort = 8079
+port = 8080
+publish = "dist"
+autoLaunch = false
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200

@@ -1,8 +1,9 @@
 {
   "dependencies": {
-    "vue-router": "^4.0.13"
-  },
-  "devDependencies": {
-    "dotenv": "^16.0.3"
+    "axios": "^1.2.0",
+    "dotenv": "^16.0.3",
+    "lodash": "^4.17.21",
+    "vue-router": "^4.0.13",
+    "vuex": "^4.1.0"
   }
 }

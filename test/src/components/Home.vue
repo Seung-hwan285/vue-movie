@@ -25,7 +25,7 @@
         <ul  class="movie-list">
             <li class=movie-item v-for="movie in movies" :key="movie.imdbId">
 
-              <router-link to=" '/movie/' + movie.imdbID">
+              <router-link :to="'/movie/' + movie.imdbID" class="movie-link">
               <div class="movie-image">
                 <img :src="movie.Poster"/>
                 <p class="type">{{movie.Type}}</p>
@@ -57,8 +57,6 @@
 <script>
 
 
-import env from "@/env";
-
 export default {
 
 
@@ -70,7 +68,7 @@ export default {
     }
   },
 
-  setup(){
+  mounted(){
     console.log(process.env.VUE_APP_API_KEY);
   },
 
@@ -79,14 +77,18 @@ export default {
         if(this.textValue !==""){
           // npm run build 했을때 .env key를 불러오면 build 실패가 뜸
           // 하지만 env.js 파일에 있는 key를 불러오면 build 성공
-          fetch(`http://www.omdbapi.com/?apikey=${env.API_KEY}&s=${this.textValue}&y=${this.year}`)
-            .then((res)=>res.json())
-            .then((data)=>{
-              this.movies =data.Search;
-              this.textValue ="";
-              this.year="";
-            })
-          }
+
+          this.$store.dispatch('fetchApi/getMovie', { title: this.textValue })
+          // fetch(`
+          // http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${this.textValue}&y=${this.year}`)
+          //   .then((res)=>res.json())
+          //   .then((data)=>{
+          //     this.movies =data.Search;
+          //     console.log(data.Search);
+          //     this.textValue ="";
+          //     this.year="";
+          //   })
+           }
     }
   }
 }
