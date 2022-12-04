@@ -68,7 +68,7 @@ export default {
     }
   },
 
-  
+
   mounted(){
     console.log(process.env.VUE_APP_API_KEY);
   },
@@ -81,7 +81,7 @@ export default {
 
 
           fetch(`
-          http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${this.textValue}&y=${this.year}`)
+              /api`)
             .then((res)=>res.json())
             .then((data)=>{
               this.movies =data.Search;
