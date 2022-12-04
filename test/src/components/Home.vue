@@ -79,7 +79,6 @@ export default {
           // npm run build 했을때 .env key를 불러오면 build 실패가 뜸
           // 하지만 env.js 파일에 있는 key를 불러오면 build 성공
 
-
           fetch(`
               /api/getMovie`,{title : this.textValue})
             .then((res)=>res.json())
