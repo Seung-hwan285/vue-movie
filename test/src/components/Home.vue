@@ -79,7 +79,7 @@ export default {
         if(this.textValue !==""){
           // npm run build 했을때 .env key를 불러오면 build 실패가 뜸
           // 하지만 env.js 파일에 있는 key를 불러오면 build 성공
-          fetch(`http://www.omdbapi.com/?apikey=${env.API_KEY}&s=${this.textValue}&y=${this.year}`)
+          fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${this.textValue}&y=${this.year}`)
             .then((res)=>res.json())
             .then((data)=>{
               this.movies =data.Search;
