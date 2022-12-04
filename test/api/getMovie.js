@@ -1,13 +1,18 @@
-import fetch from 'node-fetch';
-export default async function handler({request}, response) {
+const axios = require('axios')
 
+exports.handler = async function (event) {
 
-    const res = await
-        fetch(`https://www.omdbapi.com?apikey=${process.env.VUE_APP_API_KEY}&s=${title2}`);
-    const data = await res.json();
+    const options = JSON.parse(event.body)
 
-
-    console.log(data);
-
-    return data;
+    console.log(options)
+    const { title, method, body } = options
+    const { data } = await axios({
+        url: `https://www.omdbapi.com?apikey=${process.env.VUE_APP_API_KEY}&s=${title}`,
+        method,
+        data: body,
+    })
+    return {
+        statusCode: 200,
+        body: JSON.stringify(data),
+    }
 }
