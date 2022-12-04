@@ -5,7 +5,7 @@ export default {
         async getMovie({ commit }, options) {
             if (options.title) {
                 console.log(options.title);
-                const getMovie = await fetch('/functions/getMovie', {
+                const getMovie = await fetch('./functions/getMovie', {
                     method: 'POST',
                     body: JSON.stringify(options),
                 }).then((res) => res.json())
