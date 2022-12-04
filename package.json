@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "vue-router": "^4.0.13"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
+}
