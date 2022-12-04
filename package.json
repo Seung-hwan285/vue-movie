@@ -5,5 +5,11 @@
     "lodash": "^4.17.21",
     "vue-router": "^4.0.13",
     "vuex": "^4.1.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   }
+
 }
