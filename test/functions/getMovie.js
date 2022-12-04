@@ -8,11 +8,9 @@ exports.handler = async function (event) {
   const options = JSON.parse(event.body)
 
   console.log(options)
-  const { title, method, body } = options
+  const { title} = options
   const { data } = await axios({
     url: `https://www.omdbapi.com?apikey=${VUE_APP_API_KEY}&s=${title}`,
-    method,
-    data: body,
   })
   return {
     statusCode: 200,
