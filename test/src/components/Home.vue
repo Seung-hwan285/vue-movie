@@ -81,7 +81,7 @@ export default {
 
 
           fetch(`
-              /api`)
+              /test/api`)
             .then((res)=>res.json())
             .then((data)=>{
               this.movies =data.Search;
