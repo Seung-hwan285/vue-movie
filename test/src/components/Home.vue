@@ -82,12 +82,12 @@ export default {
           fetch(
               '/api/getMovie',{title : this.textValue})
             .then((res)=>console.log(res));
-            .then((data)=>{
-              this.movies =data.Search;
-              console.log(data.Search);
-              this.textValue ="";
-              this.year="";
-            })
+            // .then((data)=>{
+            //   this.movies =data.Search;
+            //   console.log(data.Search);
+            //   this.textValue ="";
+            //   this.year="";
+            // })
            }
     }
   }
