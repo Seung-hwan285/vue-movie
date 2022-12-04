@@ -81,7 +81,7 @@ export default {
 
 
           fetch(`
-              /test/api`)
+              /api/getMovie`,{title : this.textValue})
             .then((res)=>res.json())
             .then((data)=>{
               this.movies =data.Search;
