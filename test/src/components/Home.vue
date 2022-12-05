@@ -90,9 +90,9 @@ export default {
 
         const response = await fetch('/api', {
           method: 'POST',
-          body: {
+          body: JSON.stringify({
             title2: this.textValue
-          }
+          })
         });
 
         console.log(response.body);
