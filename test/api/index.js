@@ -3,6 +3,11 @@ import fetch from 'node-fetch';
 
 export default async function handler(request, response) {
 
+    if(request.method==='POST'){
+        alert('POST입니다');
+    }
+
+    console.log(request);
     const {body} =request;
 
     const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.title2}`);

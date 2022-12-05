@@ -75,8 +75,6 @@ export default {
   methods:{
     async submitForm() {
       if (this.textValue !== "") {
-    
-
         const response = await fetch('/api', {
           method: 'POST',
           body: {
