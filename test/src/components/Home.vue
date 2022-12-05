@@ -88,19 +88,11 @@ export default {
           //   })
           // }
 
-          fetch('/api',{
-            method:'POST',
-            body:{
-              title : this.textValue
-            }
-          }).then((res)=>res.json())
-          .then((data)=>console.log(data));
-
-
-
           fetch('/api')
-          .then((res)=>res.json())
+              .then((res)=>res.json())
           .then((data)=>console.log(data));
+
+
 
 
         }
