@@ -88,7 +88,7 @@ export default {
           //   })
           // }
 
-          fetch('/api/getMovie',{
+          fetch('/api',{
             method:'POST',
             body:{
               title : this.textValue
@@ -97,9 +97,11 @@ export default {
           .then((data)=>console.log(data));
 
 
-          fetch('/functions/hello')
+          
+          fetch('/api')
           .then((res)=>res.json())
           .then((data)=>console.log(data));
+
 
         }
     }
