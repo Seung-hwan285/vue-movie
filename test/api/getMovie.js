@@ -1,4 +1,14 @@
-export default async function handler(req, res) {
-    const { body } = req;
-    return res.send(`Hello ${body.name}, you just parsed the request body!`);
+import fetch from 'node-fetch';
+// &y=${this.year}
+export default async function handler(request, response) {
+
+    console.log(request);
+    const {body} =request;
+
+    console.log(body);
+
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${textValue}`);
+    const data = await res.json();
+
+    return response.status(200).json(data);
 }

@@ -9,13 +9,13 @@
 </template>
 
 <script>
+
 import {useRoute} from "vue-router";
 import {ref, onMounted} from "vue";
 
 export default {
+
   name: "MovieDetail",
-
-
   setup(){
     const route= useRoute();
     const movie = ref({});

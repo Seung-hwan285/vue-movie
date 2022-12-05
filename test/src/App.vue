@@ -6,7 +6,6 @@
     </router-link>
   </nav>
 
-
   <main>
     <router-view/>
   </main>
