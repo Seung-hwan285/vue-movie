@@ -3,12 +3,16 @@ import fetch from 'node-fetch';
 
 export default async function handler(request, response) {
 
-    const {method, body} =request;
+    const {body} =request;
 
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.title2}`);
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.title2}`,{
+        method:'POST',
+        body: JSON.stringify(body),
+    });
     const data = await res.json();
     return response.status(200).json({ data });
 }
+
 // &y=${this.year}
 // export default async function handler(request, response) {
 //
