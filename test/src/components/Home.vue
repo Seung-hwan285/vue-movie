@@ -97,6 +97,10 @@ export default {
           .then((data)=>console.log(data));
 
 
+          fetch('/functions/hello')
+          .then((res)=>res.json())
+          .then((data)=>console.log(data));
+
         }
     }
   }
