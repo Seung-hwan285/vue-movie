@@ -91,7 +91,7 @@ export default {
           fetch('/api',{
             method:'POST',
             body:{
-              title :this.textValue
+              title2 :this.textValue
             }
           })
               .then((res)=>res.json())

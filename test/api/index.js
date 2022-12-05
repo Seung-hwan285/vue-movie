@@ -5,7 +5,8 @@ export default async function handler(request, response) {
 
     const {body} =request;
     console.log(request);
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.textValue}`);
+
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.title2}`);
     const data = await res.json();
     return response.status(200).json({ data });
 }
