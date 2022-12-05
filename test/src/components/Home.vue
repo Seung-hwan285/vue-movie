@@ -89,7 +89,7 @@ export default {
         // }
 
         const response = await fetch('/api', {
-          method: 'GET',
+          method: 'POST',
           body: {
             title2: this.textValue
           }
