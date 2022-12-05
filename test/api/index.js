@@ -3,9 +3,6 @@ import fetch from 'node-fetch';
 
 export default async function handler(request, response) {
 
-    if(request.method==='POST'){
-        alert('POST입니다');
-    }
 
     console.log(request);
     const {body} =request;
