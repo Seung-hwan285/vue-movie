@@ -3,8 +3,7 @@ import fetch from 'node-fetch';
 
 export default async function handler(request, response) {
 
-    const {body} =request;
-    console.log(request);
+    const {body} =response;
 
     const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.title2}`);
     const data = await res.json();
