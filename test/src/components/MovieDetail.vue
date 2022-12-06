@@ -23,8 +23,9 @@ export default {
     onMounted(async ()=>{
       const id = route.params.id;
       const response = await fetch(`/api/post/${id}`);
-      console.log(response.json());
-      movie.value =await response.json();
+      const data =await response.json();
+      console.log(data);
+      movie.value =data;
       // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
       // .then((res)=>res.json())
       // .then((data)=>{
