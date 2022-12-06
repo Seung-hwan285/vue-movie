@@ -24,10 +24,7 @@ export default {
       const id = route.params.id;
       const response = await fetch(`/api/post/${id}`);
       const result =await response.json();
-
-
       console.log(result);
-      console.log(result.data);
       movie.value =result.data;
       // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
       // .then((res)=>res.json())
@@ -36,7 +33,6 @@ export default {
       //   movie.value = data;
       //   console.log(movie);
       // });
-
     });
       return{
         movie
@@ -59,10 +55,10 @@ export default {
 .movie-detail h2 {
 
   color: black;
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 600;
-  width: 10%;
-  margin: 0 auto;
+  width: 100%;
+  text-align: center;
 
 }
 img {

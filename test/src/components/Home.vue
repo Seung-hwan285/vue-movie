@@ -72,8 +72,8 @@ export default {
     async submitForm() {
 
       if (this.textValue !== "") {
-      const title =this.textValue;
-    
+
+        const title =this.textValue;
         // /api/get/${title}
 
         // body 안넘어오고 있음 이거 해결해야함
