@@ -24,6 +24,10 @@ export default {
       const id = route.params.id;
       const response = await fetch(`/api/post/${id}`);
       const result =await response.json();
+
+
+      console.log(result);
+      console.log(result.data);
       movie.value =result.data;
       // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
       // .then((res)=>res.json())
