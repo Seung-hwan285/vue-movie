@@ -11,7 +11,7 @@
 <script>
 
 import {useRoute} from "vue-router";
-import {ref, onMounted} from "vue";
+import {onMounted, ref} from "vue";
 
 export default {
 
@@ -24,9 +24,7 @@ export default {
 
       const id = route.params.id;
       const response = await fetch(`/api/post/${id}`);
-      const result =await response.json();
-
-      console.log(result);
+      movie.value =await response.json();
       //
       // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
       // .then((res)=>res.json())
