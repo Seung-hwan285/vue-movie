@@ -79,13 +79,15 @@ export default {
 
 
         if(year !==""){
-          const data=await getTitleAndYear(title, year);
-          this.movies=data.Search;
+          const result=await getTitleAndYear(title, year);
+
+          console.log(result);
+          this.movies=result.data.Search;
         }
 
         else{
-          const data =await getTitle(title);
-          this.movies=data.Search;
+          const result =await getTitle(title);
+          this.movies=result.data.Search;
         }
 
         this.isShow=false;
