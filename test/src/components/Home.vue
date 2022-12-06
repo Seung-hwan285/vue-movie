@@ -3,7 +3,7 @@
     <div class="feature-card">
         <router-link to="/">
           <img
-              src="http://image.jtbcplus.kr/data/contents/jam_photo/202201/12/3723b663-bb97-4001-8d8a-624b3f5cfbe3.jpg"  class="featured-img" />
+              src="https://blog.kakaocdn.net/dn/xuZQj/btrOlLgmXhB/X6MppvJqBHvKYk3G6A5XI0/img.jpg"  class="featured-img" />
           <div class="detail movie-header">
             <h3>영화관</h3>
 
