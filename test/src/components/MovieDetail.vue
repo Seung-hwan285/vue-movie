@@ -21,21 +21,21 @@ export default {
     const movie = ref({});
 
     onMounted(async ()=>{
+      const id = route.params.id;
+      const response = await fetch(`/api/get/${id}`);
 
-      const id =route.params.id;
-      // const id = route.params.id;
-      // const response = await fetch(`/api/get/${id}`);
-      //
-      // console.log(response);
-      // movie.value =await response.json();
+      const data =await response.json();
+      console.log(data);
 
-      fetch(`/api/get/${id}`)
-      .then((res)=>res.json())
-      .then((data)=>{
-        console.log(data);
-        movie.value = data;
-        console.log(movie);
-      });
+      movie.value =data;
+
+      // fetch(`/api/get/${id}`)
+      // .then((res)=>res.json())
+      // .then((data)=>{
+      //   console.log(data);
+      //   movie.value = data;
+      //   console.log(movie);
+      // });
 
     });
       return{
