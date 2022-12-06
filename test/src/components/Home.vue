@@ -81,10 +81,10 @@ export default {
         // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch(`/api/get/`,{
           method:'POST',
-          body:{
+          body:JSON.stringify({
             title : title,
             year :year,
-          }
+          })
         });
         console.log(response.body);
         const result =await response.json();
