@@ -22,7 +22,9 @@ export default {
 
     onMounted(async ()=>{
       const id = route.params.id;
-      const response = await fetch(`/api/get/${id}`);
+
+      console.log(id);
+      const response = await fetch(`/api/post/${id}`);
 
       const data =await response.json();
       console.log(data);
