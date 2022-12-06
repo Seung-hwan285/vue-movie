@@ -81,7 +81,7 @@ export default {
         // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch('/api', {
           method: 'POST',
-          title3 : this.textValue
+          title : this.textValue
         });
 
         console.log(response.body);
