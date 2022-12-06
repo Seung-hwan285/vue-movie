@@ -14,7 +14,7 @@ import {useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
 
 export default {
-
+  
   name: "MovieDetail",
   setup(){
     const route= useRoute();
