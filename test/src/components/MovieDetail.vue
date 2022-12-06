@@ -27,13 +27,14 @@ export default {
 
       console.log(response);
       movie.value =await response.json();
-      //
-      // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
-      // .then((res)=>res.json())
-      // .then((data)=>{
-      //   movie.value = data;
-      //   console.log(movie);
-      // });
+
+      fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
+      .then((res)=>res.json())
+      .then((data)=>{
+        console.log(data);
+        movie.value = data;
+        console.log(movie);
+      });
 
     });
       return{
