@@ -79,12 +79,7 @@ export default {
 
         console.log(year);
         // body 안넘어오고 있음 이거 해결해야함
-        const response = await fetch(`/api/get`,{
-          body:JSON.stringify({
-            title :title,
-            year : year,
-          })
-        });
+        const response = await fetch(`/api/get/${title}/${year}`);
 
         console.log(response);
         const result =await response.json();
