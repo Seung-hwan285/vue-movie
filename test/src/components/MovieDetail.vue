@@ -22,7 +22,6 @@ export default {
 
     onMounted(async ()=>{
       const id = route.params.id;
-
       const response = await fetch(`/api/post/${id}`);
       console.log(response.json());
       movie.value =await response.json();
