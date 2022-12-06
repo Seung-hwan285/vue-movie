@@ -49,6 +49,8 @@
 <script>
 
 
+import {getTitle, getTitleAndYear} from "../../request";
+
 export default {
 
 
@@ -72,22 +74,18 @@ export default {
     async submitForm() {
 
       if (this.textValue !== "") {
-
         const title =this.textValue;
         const year=this.year;
-        // /api/get/${title}
-        console.log(year);
+
 
         if(year !==""){
-          const response = await fetch(`/api/get/${title}/${year}`);
-          const result =await response.json();
-          this.movies=result.data.Search;
+          const data=await getTitleAndYear(title, year);
+          this.movies=data.Search;
         }
 
         else{
-          const response = await fetch(`/api/getTitle/${title}`);
-          const result =await response.json();
-          this.movies=result.data.Search;
+          const data =await getTitle(title);
+          this.movies=data.Search;
         }
 
         this.isShow=false;
