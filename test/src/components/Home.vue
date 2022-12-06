@@ -80,10 +80,8 @@ export default {
 
         // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch(`/api/post/${title}`);
-
-        console.log(response.body);
-        const data =await response.json();
-        console.log(data);
+        const data =response.json();
+        this.movies = data;
       }
     }
   }
