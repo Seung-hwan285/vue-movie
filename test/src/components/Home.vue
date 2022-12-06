@@ -79,7 +79,7 @@ export default {
         // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch(`/api/get/${title}`);
         const result =await response.json();
-        
+
         this.movies=result.data.Search;
         this.isShow=false;
 
@@ -160,7 +160,6 @@ export default {
     font-size: 20px;
     cursor: pointer;
   }
-  /*Naruto*/
 
   .movie-list{
     display: flex;
