@@ -77,11 +77,11 @@ export default {
       if (this.textValue !== "") {
     
 
+
+        // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch('/api', {
           method: 'POST',
-          body: JSON.stringify({
-            title2: this.textValue
-          })
+          title3 : this.textValue
         });
 
         console.log(response.body);
