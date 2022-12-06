@@ -80,8 +80,6 @@ export default {
 
         if(year !==""){
           const result=await getTitleAndYear(title, year);
-
-          console.log(result);
           this.movies=result.data.Search;
         }
 
