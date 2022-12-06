@@ -20,7 +20,6 @@
     </form>
 
 
-<!--    38분 41초 -->
     <div>
         <ul  class="movie-list">
             <li class=movie-item v-for="movie in movies" :key="movie.imdbId">
@@ -75,7 +74,6 @@ export default {
         // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch(`/api/get/${title}`);
         const result =await response.json();
-
 
         this.movies=result.data.Search;
       }

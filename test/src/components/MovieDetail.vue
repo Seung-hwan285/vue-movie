@@ -20,13 +20,20 @@ export default {
     const route= useRoute();
     const movie = ref({});
 
-    onMounted(()=>{
-      fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
-      .then((res)=>res.json())
-      .then((data)=>{
-        movie.value = data;
-        console.log(movie);
-      });
+    onMounted(async ()=>{
+
+      const id = route.params.id;
+      const response = await fetch(`/api/get/${id}`);
+      const result =await response.json();
+
+      console.log(result);
+      //
+      // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
+      // .then((res)=>res.json())
+      // .then((data)=>{
+      //   movie.value = data;
+      //   console.log(movie);
+      // });
 
     });
       return{
