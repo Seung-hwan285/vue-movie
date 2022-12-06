@@ -87,8 +87,7 @@ export default {
           const result =await getTitle(title);
           this.movies=result.data.Search;
         }
-
-
+        this.isShow=false;
 
         setTimeout(()=>{
           this.isShow=true;

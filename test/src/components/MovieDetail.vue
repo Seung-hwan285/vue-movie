@@ -42,12 +42,16 @@ export default {
       //   console.log(movie);
       // });
     });
-      return{
+
+    this.isShow=false;
+
+    return{
         movie
       }
   },
 
   mounted() {
+
     setTimeout(()=>{
       this.isShow=true;
     },4000);
