@@ -76,15 +76,19 @@ export default {
         const title =this.textValue;
         const year=this.year;
         // /api/get/${title}
-
         console.log(year);
-        // body 안넘어오고 있음 이거 해결해야함
-        const response = await fetch(`/api/get/${title}/${year}`);
 
-        console.log(response);
-        const result =await response.json();
-        console.log(result);
-        this.movies=result.data.Search;
+        if(year !==""){
+          const response = await fetch(`/api/get/${title}/${year}`);
+          const result =await response.json();
+          this.movies=result.data.Search;
+        }
+        else{
+          const response = await fetch(`/api/get/${title}`);
+          const result =await response.json();
+          this.movies=result.data.Search;
+        }
+
 
         this.isShow=false;
         setInterval(()=>{
