@@ -20,7 +20,7 @@
     </form>
 
 
-    <div>
+    <div v-if="isShow">
         <ul  class="movie-list">
             <li class=movie-item v-for="movie in movies" :key="movie.imdbId">
 
@@ -37,10 +37,13 @@
               </router-link>
             </li>
         </ul>
-
+    </div>
+    <div class="container" v-else>
+      <div class="spinner"><i class="fas fa-spinner fa-10x"></i></div>
     </div>
 
   </div>
+
 </template>
 
 <script>
@@ -54,6 +57,7 @@ export default {
         textValue : '',
         year: '',
         movies :[],
+        isShow :true
     }
   },
 
@@ -61,21 +65,28 @@ export default {
 
   setup(){
     console.log(process.env.VUE_APP_API_KEY);
+
   },
 
   methods:{
     async submitForm() {
 
       if (this.textValue !== "") {
-
+      const title =this.textValue;
     
-        const title = this.textValue;
+        // /api/get/${title}
 
         // body 안넘어오고 있음 이거 해결해야함
         const response = await fetch(`/api/get/${title}`);
         const result =await response.json();
-
+        
         this.movies=result.data.Search;
+        this.isShow=false;
+
+
+        setInterval(()=>{
+          this.isShow=true;
+        },4000);
       }
     }
   }
@@ -160,9 +171,27 @@ export default {
     max-width: 50%;
     padding: 26px 20px;
   }
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container{
+    color: #FFFFFF;
+  }
 
-  .movie-link{
-
+  .spinner {
+    animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
 
