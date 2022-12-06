@@ -86,8 +86,9 @@ export default {
             year :year,
           }
         });
+        console.log(response.body);
         const result =await response.json();
-
+        console.log(result);
         this.movies=result.data.Search;
 
         this.isShow=false;
