@@ -85,7 +85,7 @@ export default {
         const data =await response.json();
         console.log(data);
 
-        this.movies=data;
+        this.movies=data.Search;
       }
     }
   }
