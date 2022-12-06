@@ -3,7 +3,7 @@
     <div class="feature-card">
         <router-link to="/">
           <img
-              src="https://blog.kakaocdn.net/dn/xuZQj/btrOlLgmXhB/X6MppvJqBHvKYk3G6A5XI0/img.jpg"  class="featured-img" />
+              src="https://p4.wallpaperbetter.com/wallpaper/233/744/838/totoro-hayao-miyazaki-rain-umbrella-wallpaper-preview.jpg"  class="featured-img" />
           <div class="detail movie-header">
             <h3>영화관</h3>
 
@@ -90,9 +90,9 @@ export default {
           this.movies=result.data.Search;
         }
 
-
         this.isShow=false;
-        setInterval(()=>{
+
+        setTimeout(()=>{
           this.isShow=true;
         },4000);
       }
