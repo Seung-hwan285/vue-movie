@@ -41,16 +41,6 @@
 
     </div>
 
-<!--    <div class="movie-list">-->
-<!--      <div class="movie" v-for="movie in movies" :key ="movie.imdbId">-->
-<!--        <router-link to="'/movie">-->
-
-
-<!--        </router-link>-->
-
-<!--      </div>-->
-<!--    </div>-->
-
   </div>
 </template>
 
@@ -68,7 +58,7 @@ export default {
     }
   },
 
-  mounted(){
+  setup(){
     console.log(process.env.VUE_APP_API_KEY);
   },
 
@@ -79,7 +69,7 @@ export default {
         const title = this.textValue;
 
         // body 안넘어오고 있음 이거 해결해야함
-        const response = await fetch(`/api/post/${title}`);
+        const response = await fetch(`/api/get/${title}`);
         const result =await response.json();
 
 
