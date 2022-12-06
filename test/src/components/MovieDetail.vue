@@ -47,8 +47,7 @@ export default {
       }
   },
 
-  mounted() {
-    this.isShow=false;
+  onUpdated() {
     setTimeout(()=>{
       this.isShow=true;
     },4000);
