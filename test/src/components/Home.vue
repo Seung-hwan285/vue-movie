@@ -88,7 +88,7 @@ export default {
           this.movies=result.data.Search;
         }
 
-        this.isShow=false;
+
 
         setTimeout(()=>{
           this.isShow=true;

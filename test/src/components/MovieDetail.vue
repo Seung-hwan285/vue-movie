@@ -1,8 +1,5 @@
 <template>
   <div class="movie-detail" v-if="isShow">
-
-
-
       <h2>{{movie.Title}}</h2>
       <img :src="movie.Poster"/>
       <p>{{movie.Plot}}</p>
@@ -37,13 +34,6 @@ export default {
       const response = await fetch(`/api/getId/${id}`);
       const result = await response.json();
       movie.value = result.data;
-
-
-      this.isShow=false;
-
-      setTimeout(()=>{
-        this.isShow=true;
-      },4000);
       // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
       // .then((res)=>res.json())
       // .then((data)=>{
@@ -56,6 +46,13 @@ export default {
         movie
       }
   },
+
+  mounted() {
+    setTimeout(()=>{
+      this.isShow=true;
+    },4000);
+  }
+
 }
 
 </script>
