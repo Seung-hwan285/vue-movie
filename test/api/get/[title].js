@@ -3,9 +3,9 @@ import fetch from 'node-fetch';
 
 export default async function handler(request, response) {
 
-    const {title} =request.query;
+    const {title,year} =request.query;
     
-    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${title}`);
+    const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${title}&y=${year}`);
     const data = await res.json();
     return response.status(200).json({ data });
 }
@@ -13,12 +13,10 @@ export default async function handler(request, response) {
 // &y=${this.year}
 // export default async function handler(request, response) {
 //
-//     console.log(request);
+//
 //     const {body} =request;
 //
-//     console.log(body);
-//
-//     const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${textValue}`);
+//     const res = await fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${body.textValue}`);
 //     const data = await res.json();
 //
 //     return response.status(200).json(data);

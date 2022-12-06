@@ -24,7 +24,6 @@ export default {
       const id = route.params.id;
       const response = await fetch(`/api/getId/${id}`);
       const result =await response.json();
-      console.log(result);
       movie.value =result.data;
       // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
       // .then((res)=>res.json())
@@ -38,10 +37,8 @@ export default {
         movie
       }
   },
-
-
-
 }
+
 </script>
 
 <style scoped>
@@ -53,14 +50,13 @@ export default {
 }
 
 .movie-detail h2 {
-
   color: black;
   font-size: 25px;
   font-weight: 600;
   width: 100%;
   text-align: center;
-
 }
+
 img {
   display: block;
   margin: 100px auto;
