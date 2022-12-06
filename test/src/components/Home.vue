@@ -77,14 +77,13 @@ export default {
         const year=this.year;
         // /api/get/${title}
         console.log(year);
-
         if(year !==""){
           const response = await fetch(`/api/get/${title}/${year}`);
           const result =await response.json();
           this.movies=result.data.Search;
         }
         else{
-          const response = await fetch(`/api/get/${title}`);
+          const response = await fetch(`/api/getTitle/${title}`);
           const result =await response.json();
           this.movies=result.data.Search;
         }
