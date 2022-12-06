@@ -58,18 +58,22 @@ export default {
     }
   },
 
+  //  http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${this.textValue}&y=${this.year}
+
   setup(){
     console.log(process.env.VUE_APP_API_KEY);
   },
 
   methods:{
     async submitForm() {
+
       if (this.textValue !== "") {
     
         const title = this.textValue;
+        const year= this.year;
 
         // body 안넘어오고 있음 이거 해결해야함
-        const response = await fetch(`/api/get/${title}`);
+        const response = await fetch(`/api/get/${title}/${year}`);
         const result =await response.json();
 
 
