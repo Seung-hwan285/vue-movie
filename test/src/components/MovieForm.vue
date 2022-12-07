@@ -58,6 +58,23 @@ export default {
 </script>
 
 <style scoped>
+
+input {
+  margin-right: 10px;
+  display: block;
+  appearance: none;
+  outline: none;
+
+  color: black;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
 .search-box {
   display: flex;
   /*가로 위치 정렬*/
