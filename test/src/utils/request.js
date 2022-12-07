@@ -1,23 +1,16 @@
 import fetch from "node-fetch";
-const {api} = require('/test/src/utils/constant.js');
-
-
 
 export const movieAPI={
-
-
-
-
     getTitleAndYear  : async (title,year)=>{
-        const response = await fetch(`${api.GET_TITLE_YEAR}/${title}/${year}`);
+        const response = await fetch(`/api/get/${title}/${year}`);
         return  response.json();
     },
     getTitle : async (title)=>{
-        const response =await fetch(`${api.GET_TITLE}${title}`);
+        const response =await fetch(`/api/getTitle/${title}`);
         return response.json();
     },
     getId : async (id)=>{
-        const res = await fetch(`${api.GET_ID}/${id}`);
+        const res = await fetch(`/api/getId/${id}`);
         return res.json();
     }
 }
