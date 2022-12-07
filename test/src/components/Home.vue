@@ -73,13 +73,16 @@ let isShow = ref(true);
 const onSubmit = async () => {
   if (year.value !== "") {
     const response = await getTitleAndYear(textValue.value, year.value);
-    movies.value = response.Search;
+
+    console.log(response);
+    movies.value = response.data.Search;
     textValue.value = "";
     year.value = "";
 
   } else {
         const response = await getTitle(textValue.value);
-        movies.value = response.Search;
+        console.log(response);
+        movies.value = response.data.Search;
         textValue.value = ""
   }
   isShow.value =false;
