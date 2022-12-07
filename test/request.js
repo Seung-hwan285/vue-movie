@@ -4,6 +4,6 @@ export const getTitleAndYear=async (title,year)=>{
 }
 
 export const getTitle=async (title)=>{
-    const response =await fetch(`/api/getTitle/${title}`);
+    const response =await fetch(`/api/get/${title}`);
     return response.json();
 }

@@ -47,6 +47,7 @@ export default {
       }
   },
 
+  // 로딩바 무한로딩 걸리는 현상
   onUpdated() {
     setTimeout(()=>{
       this.isShow=true;
