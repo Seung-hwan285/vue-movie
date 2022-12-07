@@ -5,58 +5,36 @@
       <p>{{movie.Plot}}</p>
   </div>
 
-  <div class="container" v-else>
-    <div class="spinner"><i class="fas fa-spinner fa-10x"></i></div>
-  </div>
+  <LoadingSpinner v-else/>
 
 </template>
 
-<script>
+<script setup>
 
 import {useRoute} from "vue-router";
 import {onMounted, ref} from "vue";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import {movieAPI} from "@/utils/request";
 
-export default {
+  const route = useRoute();
+  const movie = ref({});
+  let isShow = ref(true);
 
-  data(){
-    return{
-      isShow : false,
-    }
-  },
+  onMounted(async () => {
+    const id =route.params.id;
+    const response = await movieAPI.getId(id);
 
-  name: "MovieDetail",
-  setup() {
-    const route = useRoute();
-    const movie = ref({});
-
-    onMounted(async () => {
-      const id = route.params.id;
-      const response = await fetch(`/api/getId/${id}`);
-      const result = await response.json();
-      movie.value = result.data;
-      // fetch(`http://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&i=${route.params.id}&plot=full`)
-      // .then((res)=>res.json())
-      // .then((data)=>{
-      //   console.log(data);
-      //   movie.value = data;
-      //   console.log(movie);
-      // });
-    });
-    return{
-        movie
-      }
-  },
-
-  // 로딩바 무한로딩 걸리는 현상
-  onUpdated() {
+    isShow.value =false;
     setTimeout(()=>{
-      this.isShow=true;
-    },4000);
-  }
+      isShow.value=true;
+    },2000);
 
-}
+    movie.value = response;
+  });
 
 </script>
+
+
 
 <style scoped>
 
@@ -64,6 +42,7 @@ export default {
   width: 50%;
   background-color: #FFFFFF;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 .movie-detail h2 {

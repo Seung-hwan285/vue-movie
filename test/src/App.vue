@@ -1,24 +1,21 @@
 <template>
 
-  <nav>
+  <nav class="logo">
     <router-link to="/">
-      <h1><span>Vue Movie</span></h1>
+      <h1 class="logo-title"><span>Vue Movie</span></h1>
     </router-link>
   </nav>
-
   <main>
     <router-view/>
   </main>
 
 </template>
 
-<script>
+<script setup>
 
 
 
-export default {
 
-}
 </script>
 
 <style>
@@ -36,7 +33,7 @@ a{
   text-decoration: none;
 }
 
-nav{
+.logo{
   display: flex;
   align-content: center;
   justify-items: center;
@@ -45,7 +42,7 @@ nav{
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-h1{
+.logo-title{
   color: #eee;
 }
 

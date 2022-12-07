@@ -1,54 +1,16 @@
 <template>
+
   <div class="home">
-    <div class="feature-card">
-      <router-link to="/">
-        <img
-            src="https://p4.wallpaperbetter.com/wallpaper/233/744/838/totoro-hayao-miyazaki-rain-umbrella-wallpaper-preview.jpg"
-            class="featured-img"/>
-        <div class="detail movie-header">
-          <h3>영화관</h3>
+    <MovieHeader/>
 
-        </div>
-      </router-link>
-    </div>
-
-
-    <form @submit.prevent="onSubmit" class="search-box">
-
+    <form @submit.prevent="onSubmit"  class="search-box">
       <input type="text" v-model="textValue" placeholder="제목"/>
-
       <input type="text" v-model="year" placeholder="년도"/>
-
-      <input type="submit" class="input-search" value="Search"/>
+      <input type="submit" class="input-search" value="검색"/>
     </form>
 
-
-     <div v-if="isShow">
-      <ul class="movie-list">
-       <!-- 데이터 -->
-        <li class=movie-item v-for="movie in movies" :key="movie.imdbId">
-
-          <router-link :to="'/movie/' + movie.imdbID" class="movie-link">
-            <div class="movie-image">
-              <img :src="movie.Poster"/>
-              <p class="type">{{ movie.Type }}</p>
-            </div>
-
-            <div class="movie-info">
-              <p class="movie-year">{{ movie.Year }}</p>
-              <h3 class="movie-title">{{ movie.Title }}</h3>
-            </div>
-          </router-link>
-        </li>
-      </ul>
-    </div>
-
-    <div class="container" v-else>
-      <div class="spinner"><i class="fas fa-spinner fa-10x"></i></div>
-    </div>
-
-
-
+    <MovieItems :movies="movies" v-if="isShow"/>
+    <LoadingSpinner v-else/>
   </div>
 
 </template>
@@ -56,110 +18,42 @@
 <script setup>
 
 import {ref} from "vue";
-import {getTitle, getTitleAndYear} from "../../request";
+import MovieItems from "@/components/MovieItems";
+import {movieAPI} from "@/utils/request";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import MovieHeader from "@/components/MovieHeader";
 
-const useInput = () => {
-  const textValue = ref("");
-  const year = ref("");
-  return {
-    textValue, year
-  }
-}
-
-const {textValue, year} = useInput();
+const textValue = ref("");
+const year = ref("");
 const movies = ref([]);
 let isShow = ref(true);
 
-const onSubmit = async () => {
-  if (year.value !== "") {
-    const response = await getTitleAndYear(textValue.value, year.value);
 
-    console.log(response);
-    movies.value = response.data.Search;
+const onSubmit = async () => {
+
+  if (year.value !== "") {
+    const response = await movieAPI.getTitleAndYear(textValue.value, year.value);
+    movies.value = response.Search;
     textValue.value = "";
     year.value = "";
-
-  } else {
-        const response = await getTitle(textValue.value);
-        console.log(response);
-        movies.value = response.data.Search;
-        textValue.value = ""
   }
-  isShow.value =false;
 
+  else {
+    const response = await movieAPI.getTitle(textValue.value);
+    movies.value = response.Search;
+    console.log(movies.value);
+    textValue.value = ""
+  }
+
+  isShow.value =false;
   setTimeout(()=>{
     isShow.value=true;
   },2000);
-
-
-  //
-  // methods:{
-  //   async submitForm() {
-  //
-  //     if (this.textValue !== "") {
-  //       const title =this.textValue;
-  //       const year=this.year;
-  //       console.log(title);
-  //       console.log(year);
-  //
-  //       if(year !==""){
-  //         const result=await getTitleAndYear(title, year);
-  //         console.log(result);
-  //         this.movies = result.Search;
-  //         // this.movies=result.data.Search;
-  //       }
-  //
-  //       else{
-  //         const result =await getTitle(title);
-  //         this.movies=result.Search;
-  //       }
-  //
-  //       this.isShow=false;
-  //
-  //       setTimeout(()=>{
-  //         this.isShow=true;
-  //       },4000);
-  //     }
-  //   }
-  // }
 }
+
 </script>
 
 <style scoped>
-.home .feature-card {
-  position: relative;
-}
-
-.home .feature-card .featured-img {
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
-  position: relative;
-  z-index: 0;
-}
-
-.feature-card img {
-  width: 300px;
-  height: 150px;
-  object-fit: cover;
-}
-
-
-.movie-header h3 {
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}
-
-.detail {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 16px;
-  z-index: 1;
-}
 
 h3 {
   color: #FFF;
@@ -170,14 +64,6 @@ p {
   color: #FFF;
 }
 
-.search-box {
-  display: flex;
-  /*가로 위치 정렬*/
-  justify-content: center;
-  padding: 30px;
-
-
-}
 
 input {
   margin-right: 10px;
@@ -190,10 +76,16 @@ input {
   border-radius: 5px;
 }
 
-.pointing {
-  background-color: red;
-  color: red;
+
+
+.search-box {
+  display: flex;
+  /*가로 위치 정렬*/
+  justify-content: center;
+  padding: 30px;
+
 }
+
 
 .input-search {
   background-color: rgba(128, 128, 128);
@@ -201,40 +93,8 @@ input {
   cursor: pointer;
 }
 
-.movie-list {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.movie-item {
-  max-width: 50%;
-  padding: 26px 20px;
-}
 
-.container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  color: #FFFFFF;
-}
-
-.spinner {
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 
 </style>

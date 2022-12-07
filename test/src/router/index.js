@@ -1,6 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router/dist/vue-router";
 import Home from "@/components/Home";
-import HelloWorld from "@/components/HelloWorld";
 import MovieDetail from "@/components/MovieDetail";
 
 
@@ -10,12 +9,6 @@ const routes = [
         name: "Home",
         component: Home,
     },
-    {
-        path: "/about",
-        name: "About",
-        component: HelloWorld,
-    },
-
     {
         path : '/movie/:id',
         name : 'Movie Detail',
