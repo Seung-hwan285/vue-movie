@@ -26,13 +26,13 @@ export default {
       const isShow =this.isShow;
       if(this.year!==""){
         const response =await movieAPI.getTitleAndYear(this.textValue,this.year);
-        movies = response.Search;
+        movies = response.data.Search;
         this.textValue="";
         this.year="";
 
       }else{
         const response = await movieAPI.getTitle(this.textValue);
-        movies = response.Search;
+        movies = response.data.Search;
         this.textValue = "";
       }
       this.$emit('onSubmit',movies,isShow);
