@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-const {API_END_POINT,VUE_APP_API_KEY} =require('/test/src/utils/constant');
+const {API_END_POINT,VUE_APP_API_KEY} =require('/test/src/utils/constant.js');
 
 export default async function handler(request, response) {
 
