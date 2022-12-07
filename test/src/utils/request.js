@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import {api} from "@/utils/constant.js";
+const {api} = require('/test/src/utils/constant.js');
 
 
 
