@@ -40,6 +40,7 @@ const onSubmit = async () => {
 
   else {
     const response = await movieAPI.getTitle(textValue.value);
+    console.log(response);
     movies.value = response.data.Search;
     console.log(movies.value);
     textValue.value = ""

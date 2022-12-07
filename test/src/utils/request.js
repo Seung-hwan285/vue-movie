@@ -13,7 +13,7 @@ export const movieAPI={
         return  response.json();
     },
     getTitle : async (title)=>{
-        const response =await fetch(`${api.GET_TITLE}/${title}`);
+        const response =await fetch(`/api/getTitle/${title}`);
         return response.json();
     },
     getId : async (id)=>{
