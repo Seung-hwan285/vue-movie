@@ -1,9 +1,9 @@
 import fetch from 'node-fetch';
-import {API_END_POINT, VUE_APP_API_KEY} from "@/utils/constant";
 
 
 export default async function handler(request, response) {
-
+    const API_END_POINT = 'http://www.omdbapi.com/'
+    const VUE_APP_API_KEY=process.env;
     const {title,year} =request.query;
 
     const res = await fetch(`${API_END_POINT}?apikey=${VUE_APP_API_KEY}&s=${title}&y=${year}`);

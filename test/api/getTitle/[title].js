@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
-import {API_END_POINT} from "@/utils/constant";
 
 export default async function handler(request, response) {
+    const API_END_POINT = 'http://www.omdbapi.com/'
     const VUE_APP_API_KEY=process.env;
     const {title} =request.query;
 
