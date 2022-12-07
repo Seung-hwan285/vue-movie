@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 
 
 const api={
@@ -8,9 +7,7 @@ const api={
 }
 
 export const movieAPI={
-
-
-
+    
     getTitleAndYear  : async (title,year)=>{
         const response = await fetch(`${api.GET_TITLE_YEAR}/${title}/${year}`);
         return  response.json();
