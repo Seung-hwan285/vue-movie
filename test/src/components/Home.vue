@@ -81,20 +81,6 @@ input {
 
 
 
-.search-box {
-  display: flex;
-  /*가로 위치 정렬*/
-  justify-content: center;
-  padding: 30px;
-
-}
-
-
-.input-search {
-  background-color: rgba(128, 128, 128);
-  font-size: 20px;
-  cursor: pointer;
-}
 
 
 
