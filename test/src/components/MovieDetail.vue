@@ -23,13 +23,12 @@ import {movieAPI} from "@/utils/request";
   onMounted(async () => {
     const id =route.params.id;
     const response = await movieAPI.getId(id);
-
     isShow.value =false;
     setTimeout(()=>{
       isShow.value=true;
     },2000);
 
-    movie.value = response.data;
+    movie.value = response;
   });
 
 </script>

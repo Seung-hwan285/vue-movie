@@ -3,13 +3,10 @@
   <div class="home">
     <MovieHeader/>
 
-    <form @submit.prevent="onSubmit"  class="search-box">
-      <input type="text" v-model="textValue" placeholder="제목"/>
-      <input type="text" v-model="year" placeholder="년도"/>
-      <input type="submit" class="input-search" value="검색"/>
-    </form>
+    <MovieForm @onSubmit = "onSubmit"/>
 
-    <MovieItems :movies="movies" v-if="isShow"/>
+    <MovieItems v-if="isBoolean" :movies="moviesList"/>
+
     <LoadingSpinner v-else/>
   </div>
 
@@ -18,38 +15,43 @@
 <script setup>
 
 import {ref} from "vue";
-import MovieItems from "@/components/MovieItems";
-import {movieAPI} from "@/utils/request";
-import LoadingSpinner from "@/components/LoadingSpinner";
 import MovieHeader from "@/components/MovieHeader";
+import MovieForm from "@/components/MovieForm";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import MovieItems from "@/components/MovieItems";
 
-const textValue = ref("");
-const year = ref("");
-const movies = ref([]);
-let isShow = ref(true);
+let isBoolean = ref(true);
+const moviesList=ref([]);
 
 
-const onSubmit = async () => {
+const onSubmit = async (movies,isShow) => {
 
-  if (year.value !== "") {
-    const response = await movieAPI.getTitleAndYear(textValue.value, year.value);
-    movies.value = response.data.Search;
-    textValue.value = "";
-    year.value = "";
-  }
+  isBoolean.value= isShow;
+  moviesList.value =movies;
 
-  else {
-    const response = await movieAPI.getTitle(textValue.value);
-    console.log(response);
-    movies.value = response.data.Search;
-    console.log(movies.value);
-    textValue.value = ""
-  }
+  isBoolean.value=false;
 
-  isShow.value =false;
   setTimeout(()=>{
-    isShow.value=true;
+    isBoolean.value =true;
   },2000);
+
+  // if (year.value !== "") {
+  //   const response = await movieAPI.getTitleAndYear(textValue.value, year.value);
+  //   movies.value = response.data.Search;
+  //   textValue.value = "";
+  //   year.value = "";
+  // }
+  //
+  // else {
+  //   const response = await movieAPI.getTitle(textValue.value);
+  //   movies.value = response.Search;
+  //   textValue.value = ""
+  // }
+  //
+  // isShow.value =false;
+  // setTimeout(()=>{
+  //   isShow.value=true;
+  // },2000);
 }
 
 </script>
