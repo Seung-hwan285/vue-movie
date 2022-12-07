@@ -29,7 +29,7 @@ import {movieAPI} from "@/utils/request";
       isShow.value=true;
     },2000);
 
-    movie.value = response;
+    movie.value = response.data;
   });
 
 </script>
