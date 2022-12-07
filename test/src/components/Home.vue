@@ -33,14 +33,14 @@ const onSubmit = async () => {
 
   if (year.value !== "") {
     const response = await movieAPI.getTitleAndYear(textValue.value, year.value);
-    movies.value = response.Search;
+    movies.value = response.data.Search;
     textValue.value = "";
     year.value = "";
   }
 
   else {
     const response = await movieAPI.getTitle(textValue.value);
-    movies.value = response.Search;
+    movies.value = response.data.Search;
     console.log(movies.value);
     textValue.value = ""
   }
