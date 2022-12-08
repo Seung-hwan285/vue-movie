@@ -3,7 +3,7 @@
   >
     <router-link to="/">
       <img
-          src="https://p4.wallpaperbetter.com/wallpaper/233/744/838/totoro-hayao-miyazaki-rain-umbrella-wallpaper-preview.jpg"
+          src="./src/assets/image.jpg"
           class="featured-img"/>
       <div class="detail movie-header">
         <h3>Movie Search</h3>
