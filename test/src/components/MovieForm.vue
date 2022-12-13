@@ -1,59 +1,50 @@
 <template>
-
-  <form @submit.prevent="onSubmit" class="search-box">
-    <input  v-model="textValue" placeholder="제목"/>
-    <input  v-model="year" placeholder="년도"/>
-    <input type="submit" class="input-search" value="검색"/>
+  <form @submit.prevent='onSubmit' class='search-box'>
+    <input v-model='textValue' placeholder='제목' />
+    <input v-model='year' placeholder='년도' />
+    <input type='submit' class='input-search' value='검색' />
   </form>
 </template>
-
 
 <script>
 
 import {movieAPI} from "@/utils/request";
+import { checkIsTitle, checkIsYear } from '@/utils/errorHandler';
 
 export default {
   data() {
     return {
       textValue: '',
       year: '',
-      isShow:false,
-    }
+    };
   },
   methods: {
     async onSubmit() {
       let movies = [];
-      const isShow =this.isShow;
-      if(this.year!==""){
-        const response =await movieAPI.getTitleAndYear(this.textValue,this.year);
-        movies = response.data.Search;
-        this.textValue="";
-        this.year="";
+      if (this.year !== '') {
+        checkIsTitle(this.textValue);
+        checkIsYear(this.year);
 
-      }else{
+        const response = await movieAPI.getTitleAndYear(this.textValue, this.year);
+        movies = response.data.Search;
+        this.$emit('titleFormChild',this.textValue);
+        this.textValue = '';
+        this.year = '';
+
+      } else {
+        checkIsTitle(this.textValue);
         const response = await movieAPI.getTitle(this.textValue);
         movies = response.data.Search;
-        this.textValue = "";
+        this.$emit('titleFormChild',this.textValue);
+        this.textValue = '';
       }
-      this.$emit('onSubmit',movies,isShow);
+
+      this.$emit('onSubmit', movies,this.textValue);
+
     },
 
-  }
-}
-
-// let isShow = ref(true);
-
-// const emit =defineEmits({
-//
-//
-//   onSubmit: async ({textValue})=>{
-//     const response = await movieAPI.getTitle(textValue.value);
-//
-//     movies.value = response.data.Search;
-//     textValue.value ="";
-//   }
-// });
-
+  },
+};
 
 </script>
 
@@ -69,10 +60,6 @@ input {
   font-size: 20px;
   border-radius: 5px;
 }
-
-
-
-
 
 
 .search-box {
@@ -91,3 +78,4 @@ input {
 }
 
 </style>
+

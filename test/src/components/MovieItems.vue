@@ -1,20 +1,22 @@
 <template>
+  <div class='movie-container'>
+    <ul class='movie-list'>
+      <li class='movie-item' v-for='movie in movies' :key='movie.imdbId'>
+        <router-link :to="'/movie/' + movie.imdbID" class='movie-link'>
+          <div class='movie-image'>
+            <img :src='movie.Poster' />
+            <p class='type'>{{ movie.Type }}</p>
+          </div>
 
-  <ul class="movie-list">
-    <li class=movie-item v-for="movie in movies" :key="movie.imdbId">
-      <router-link :to="'/movie/' + movie.imdbID" class="movie-link">
-        <div class="movie-image">
-          <img :src="movie.Poster"/>
-          <p class="type">{{movie.Type}}</p>
-        </div>
+          <div class='movie-info'>
+            <p class='movie-year'>{{ movie.Year }}</p>
+            <h3 class='movie-title'>{{ movie.Title }}</h3>
+          </div>
+        </router-link>
+      </li>
+    </ul>
+  </div>
 
-        <div class="movie-info">
-          <p class="movie-year">{{movie.Year}}</p>
-          <h3 class="movie-title">{{movie.Title}}</h3>
-        </div>
-      </router-link>
-    </li>
-  </ul>
 
 
 </template>
@@ -23,7 +25,7 @@
 
 export default {
   props: ['movies'],
-}
+};
 
 </script>
 
@@ -36,10 +38,6 @@ h3 {
 p {
   color: #FFF;
 }
-.movie-list {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 .movie-item {
   max-width: 50%;
@@ -47,4 +45,20 @@ p {
 }
 
 
+
+.movie-title{
+  font-size: 12px
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 5%;
+}
+
+
+
+
 </style>
+

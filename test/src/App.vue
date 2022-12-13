@@ -13,9 +13,6 @@
 
 <script setup>
 
-
-
-
 </script>
 
 <style>

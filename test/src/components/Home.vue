@@ -1,58 +1,56 @@
 <template>
 
-  <div class="home">
-    <MovieHeader/>
+  <div class='home'>
+    <MovieHeader />
 
-    <MovieForm @onSubmit = "onSubmit"/>
+    <MovieForm @onSubmit='onSubmit' @titleFormChild='titleFormChild'/>
 
-    <MovieItems v-if="isBoolean" :movies="moviesList"/>
+    <MovieItems v-if='isShow' :movies='moviesList' />
 
-    <LoadingSpinner v-else/>
+    <LoadingSpinner v-else />
   </div>
 
 </template>
 
 <script setup>
 
-import {ref} from "vue";
-import MovieHeader from "@/components/MovieHeader";
-import MovieForm from "@/components/MovieForm";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import MovieItems from "@/components/MovieItems";
+import { onMounted, ref } from 'vue';
+import MovieHeader from '@/components/MovieHeader';
+import MovieForm from '@/components/MovieForm';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import MovieItems from '@/components/MovieItems';
+import { loadingHandler } from '@/utils/LoadingHandler';
+import { movieAPI } from '@/utils/request';
 
-let isBoolean = ref(true);
-const moviesList=ref([]);
+let isShow = ref(true);
+const moviesList = ref([]);
+const title =ref('');
+let page=ref(1);
 
+const onSubmit = async (movies) => {
+  moviesList.value = movies;
+  loadingHandler(isShow);
+};
 
-const onSubmit = async (movies,isShow) => {
-
-  isBoolean.value= isShow;
-  moviesList.value =movies;
-
-  isBoolean.value=false;
-
-  setTimeout(()=>{
-    isBoolean.value =true;
-  },2000);
-
-  // if (year.value !== "") {
-  //   const response = await movieAPI.getTitleAndYear(textValue.value, year.value);
-  //   movies.value = response.data.Search;
-  //   textValue.value = "";
-  //   year.value = "";
-  // }
-  //
-  // else {
-  //   const response = await movieAPI.getTitle(textValue.value);
-  //   movies.value = response.Search;
-  //   textValue.value = ""
-  // }
-  //
-  // isShow.value =false;
-  // setTimeout(()=>{
-  //   isShow.value=true;
-  // },2000);
+const titleFormChild=(textValue)=>{
+  title.value =textValue;
 }
+
+const handlerScroll=async (textValue)=>{
+  const response =await movieAPI.getNextPage(textValue,page.value++);
+
+  let scrollTop = document.documentElement.scrollTop;
+  let scrollHeight = document.documentElement.scrollHeight;
+  let clientHeight = document.documentElement.clientHeight;
+
+  if(scrollTop+clientHeight >=scrollHeight-10){
+    moviesList.value.push(...response.Search);
+  }
+}
+
+onMounted(()=>{
+  window.addEventListener('scroll',()=>handlerScroll(title.value))
+});
 
 </script>
 
@@ -67,9 +65,5 @@ p {
   color: #FFF;
 }
 
-
-
-
-
-
 </style>
+
