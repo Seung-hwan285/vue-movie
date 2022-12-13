@@ -44,7 +44,7 @@ const handlerScroll=async (textValue)=>{
   let clientHeight = document.documentElement.clientHeight;
 
   if(scrollTop+clientHeight >=scrollHeight-10){
-    moviesList.value.push(...response.Search);
+    moviesList.value.push(...response.data.Search);
   }
 }
 

@@ -1,43 +1,39 @@
 <template>
-  <div class="movie-detail" v-if="isShow">
-      <h2>{{movie.Title}}</h2>
-      <img :src="movie.Poster"/>
-      <p>{{movie.Plot}}</p>
+  <div class='movie-detail' v-if='isShow'>
+    <h2>{{ movie.Title }}</h2>
+    <img :src='movie.Poster' />
+    <p>{{ movie.Plot }}</p>
   </div>
 
-  <LoadingSpinner v-else/>
+  <LoadingSpinner v-else />
 
 </template>
 
 <script setup>
 
-import {useRoute} from "vue-router";
-import {onMounted, ref} from "vue";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import {movieAPI} from "@/utils/request";
+import { useRoute } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import { movieAPI } from '@/utils/request';
+import { loadingHandler } from '@/utils/LoadingHandler';
 
-  const route = useRoute();
-  const movie = ref({});
-  let isShow = ref(true);
+const route = useRoute();
+const movie = ref({});
+let isShow = ref(true);
 
-  onMounted(async () => {
-    const id =route.params.id;
-    const response = await movieAPI.getId(id);
-    isShow.value =false;
-    setTimeout(()=>{
-      isShow.value=true;
-    },2000);
-
-    movie.value = response.data;
-  });
+onMounted(async () => {
+  const id = route.params.id;
+  const response = await movieAPI.getId(id);
+  loadingHandler(isShow);
+  movie.value = response.data;
+});
 
 </script>
 
 
-
 <style scoped>
 
-.movie-detail{
+.movie-detail {
   width: 50%;
   background-color: #FFFFFF;
   margin: 0 auto;
@@ -56,6 +52,7 @@ img {
   display: block;
   margin: 100px auto;
 }
+
 p {
   font-weight: 600;
   color: black;
@@ -70,13 +67,15 @@ p {
   justify-content: center;
   align-items: center;
 }
-.container{
+
+.container {
   color: #FFFFFF;
 }
 
 .spinner {
   animation: spin 2s linear infinite;
 }
+
 @keyframes spin {
   from {
     transform: rotate(0);
@@ -88,3 +87,4 @@ p {
 
 
 </style>
+
