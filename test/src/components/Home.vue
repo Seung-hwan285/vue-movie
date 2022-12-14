@@ -36,12 +36,12 @@ const titleFormChild=(textValue)=>{
   title.value =textValue;
 }
 
-const handlerScroll=async (textValue)=>{
+const onScroll=async (textValue)=>{
   const response =await movieAPI.getNextPage(textValue,page.value++);
 
-  let scrollTop = document.documentElement.scrollTop;
-  let scrollHeight = document.documentElement.scrollHeight;
-  let clientHeight = document.documentElement.clientHeight;
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight;
+  const clientHeight = document.documentElement.clientHeight;
 
   if(scrollTop+clientHeight >=scrollHeight-10){
     moviesList.value.push(...response.data.Search);
@@ -49,7 +49,7 @@ const handlerScroll=async (textValue)=>{
 }
 
 onMounted(()=>{
-  window.addEventListener('scroll',()=>handlerScroll(title.value))
+  window.addEventListener('scroll',()=>onScroll(title.value))
 });
 
 </script>

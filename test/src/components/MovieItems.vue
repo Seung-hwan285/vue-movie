@@ -57,6 +57,13 @@ p {
   left: 5%;
 }
 
+.movie-image img{
+  width: 300px;
+  height: 500px;
+  object-fit: cover;
+}
+
+
 
 
 
