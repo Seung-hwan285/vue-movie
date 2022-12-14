@@ -22,10 +22,10 @@ import MovieItems from '@/components/MovieItems';
 import { loadingHandler } from '@/utils/LoadingHandler';
 import { movieAPI } from '@/utils/request';
 
-let isShow = ref(true);
+const isShow = ref(true);
 const moviesList = ref([]);
 const title =ref('');
-let page=ref(1);
+const page=ref(1);
 
 const onSubmit = async (movies) => {
   moviesList.value = movies;
@@ -44,6 +44,8 @@ const onScroll=async (textValue)=>{
   const clientHeight = document.documentElement.clientHeight;
 
   if(scrollTop+clientHeight >=scrollHeight-10){
+
+    console.log(...response.data.Search);
     moviesList.value.push(...response.data.Search);
   }
 }
