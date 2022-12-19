@@ -2,7 +2,7 @@
   <div class='movie-detail' v-if='isShow'>
     <h2>{{ movie.Title }}</h2>
     <img :src='movie.Poster'
-         onerror="this.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'"
+         onerror="this.parentElement.innerHTML = 'https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';"
     />
     <p>{{ movie.Plot }}</p>
   </div>
@@ -24,10 +24,10 @@ const route = useRoute();
 const movie = ref({});
 let isShow = ref(true);
 
-// const changeDefaultImage=(e)=>{
-//   console.log(e.target.src);
-//   e.target.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
-// }
+const changeDefaultImage=(e)=>{
+  console.log(e.target.src);
+  e.target.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
+}
 
 
 
