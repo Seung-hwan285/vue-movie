@@ -44,10 +44,11 @@ p {
   padding: 26px 20px;
 }
 
-
-
 .movie-title{
-  font-size: 12px
+  font-size: 12px;
+  width: 250px;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .movie-list {
@@ -62,8 +63,6 @@ p {
   height: 500px;
   object-fit: cover;
 }
-
-
 
 
 

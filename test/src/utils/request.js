@@ -20,10 +20,10 @@ export const movieAPI = {
         return response.json();
     },
     getNextPage: async (title, page) => {
+
         // const response = await fetch(
         //     `https://www.omdbapi.com/?apikey=${process.env.VUE_APP_API_KEY}&s=${title}&page=${page}`,
         // );
-        //
         const response = await fetch(`/api/getNextPage/${title}/${page}`);
         return response.json();
     },

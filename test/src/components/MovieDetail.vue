@@ -1,13 +1,16 @@
 <template>
   <div class='movie-detail' v-if='isShow'>
     <h2>{{ movie.Title }}</h2>
-    <img :src='movie.Poster' />
+    <img :src='movie.Poster'
+      @error="changeDefaultImage"
+    />
     <p>{{ movie.Plot }}</p>
   </div>
 
   <LoadingSpinner v-else />
 
 </template>
+
 
 <script setup>
 
@@ -21,12 +24,19 @@ const route = useRoute();
 const movie = ref({});
 let isShow = ref(true);
 
+const changeDefaultImage=(e)=>{
+  e.target.src = `@/assets/images/default.png`;
+}
+
 onMounted(async () => {
   const id = route.params.id;
   const response = await movieAPI.getId(id);
   loadingHandler(isShow);
   movie.value = response.data;
 });
+
+
+
 
 </script>
 
