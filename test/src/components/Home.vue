@@ -45,8 +45,8 @@ const onScroll=async (textValue)=>{
   if(scrollTop+clientHeight >=scrollHeight-10){
     const response =await movieAPI.getNextPage(textValue,page.value++);
 
-    console.log(...response.Search);
-    moviesList.value.push(...response.Search);
+    console.log(...response.data.Search);
+    moviesList.value.push(...response.data.Search);
   }
 
 }

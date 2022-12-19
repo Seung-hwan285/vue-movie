@@ -26,7 +26,7 @@ export default {
         checkIsYear(this.year);
 
         const response = await movieAPI.getTitleAndYear(this.textValue, this.year);
-        movies = response.Search;
+        movies = response.data.Search;
         this.$emit('titleFormChild',this.textValue);
         this.textValue = '';
         this.year = '';
@@ -35,7 +35,7 @@ export default {
         checkIsTitle(this.textValue);
 
         const response = await movieAPI.getTitle(this.textValue);
-        movies = response.Search;
+        movies = response.data.Search;
         console.log(movies);
         this.$emit('titleFormChild',this.textValue);
         this.textValue = '';
