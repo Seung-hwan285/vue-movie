@@ -24,10 +24,10 @@ const route = useRoute();
 const movie = ref({});
 let isShow = ref(true);
 
-const changeDefaultImage=(e)=>{
-  console.log(e.target.src);
-  e.target.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
-}
+// const changeDefaultImage=(e)=>{
+//   console.log(e.target.src);
+//   e.target.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
+// }
 
 
 
