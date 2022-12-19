@@ -36,7 +36,6 @@ export default {
 
         const response = await movieAPI.getTitle(this.textValue);
         movies = response.data.Search;
-        console.log(movies);
         this.$emit('titleFormChild',this.textValue);
         this.textValue = '';
       }
