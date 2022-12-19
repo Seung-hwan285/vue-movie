@@ -2,7 +2,7 @@
   <div class='movie-detail' v-if='isShow'>
     <h2>{{ movie.Title }}</h2>
     <img :src='movie.Poster'
-      @error="changeDefaultImage"
+         onerror="this.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'"
     />
     <p>{{ movie.Plot }}</p>
   </div>
@@ -25,13 +25,14 @@ const movie = ref({});
 let isShow = ref(true);
 
 const changeDefaultImage=(e)=>{
-
   console.log(e.target.src);
-  e.target.src=require('https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg');
-
+  e.target.src='https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg';
 }
 
+
+
 onMounted(async () => {
+
   const id = route.params.id;
   const response = await movieAPI.getId(id);
   loadingHandler(isShow);
