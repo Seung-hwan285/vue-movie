@@ -25,6 +25,8 @@ const movie = ref({});
 let isShow = ref(true);
 
 const changeDefaultImage=(e)=>{
+
+  console.log(e.target.src);
   e.target.src = `@/assets/images/default.png`;
 }
 
