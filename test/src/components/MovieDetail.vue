@@ -27,7 +27,7 @@ let isShow = ref(true);
 const changeDefaultImage=(e)=>{
 
   console.log(e.target.src);
-  e.target.src = require(`../assets/default.PNG`);
+  e.target.src = require(`../src/assets/default.PNG`);
 }
 
 onMounted(async () => {
